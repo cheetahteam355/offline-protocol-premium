@@ -62,7 +62,7 @@ Again, we assume you are using React Native >= 0.60 (with auto linking).
 
 * Run `cd ios && pod install && cd ..`,
 
-* Edit your project's Info.plist file and add a entry for `NSBluetoothAlwaysUsageDescription`
+* Edit your project's Info.plist file and add a entry for `NSBluetoothAlwaysUsageDescription` (describe there why your app needs usage of Bluetooth)
 
 * In case you need to use Bridgefy in background mode, add both "BLE peripheral" and "BLE accessory" capabilities in XCode.
 
@@ -75,26 +75,25 @@ First, make sure you have an API KEY to use the framework, if you don't have it,
 To start to work with the framework in Javascript, you will have to import it to the `.js` file you will be working, so add the following code:
 
 ```javascript
-  import BridgefySdk from 'react-native-bridgefy-sdk'
-  import {
-      ...
-      NativeEventEmitter,
-      ...
-    } from 'react-native';
-  
-  const bridgefyEmitter = new NativeEventEmitter(BridgefySdk);
+import BridgefySdk from 'react-native-bridgefy-sdk'
+import {
+    ...
+    NativeEventEmitter,
+    ...
+  } from 'react-native';
+
+const bridgefyEmitter = new NativeEventEmitter(BridgefySdk);
 ```  
 Before any use, you will need to initialize the Bridgefy engine, you can do it with the following code, just change the text `BRIDGEFY_API_KEY` with your actual API_KEY:  
 
 ```javascript
-  BridgefySdk.init("BRIDGEFY_APY_KEY", 
-    (errorCode, message)=>{
-      console.log(errorCode + ":" + message);
-    },
-    (client) => {
-      console.log(client);
-    }
-  );
+BridgefySdk.init("BRIDGEFY_APY_KEY")
+  .then((client)=> {
+    console.log(client);
+  })
+  .catch((e)=>{
+    console.error(e);
+  });
 ```
 If the initialization fails you will get an `errorCode` (Integer) and a `message` (string) that indicates the reason of the failute. If the initialization is successful you will get a `client` dictionary, that is described in the Appendix section.  
 
@@ -102,7 +101,13 @@ If the initialization fails you will get an `errorCode` (Integer) and a `message
 
 To keep resources, you will need to start the transmitter before use it, this is the code to do it:
 ```javascript
-BridgefySdk.start();
+BridgefySdk.start()
+  .then(()=> {
+    // Bridgefy SDK started!
+  })
+  .catch((e)=>{
+    // Bridgefy SDK could not start! Check `e` for more information...
+  });
 ```
 Once you finished using the service you can stop it by using the following code:
 ```javascript

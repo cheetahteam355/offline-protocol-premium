@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "RNBridgefy"
-  s.version      = "1.0.0"
+  s.version      = "2.0.0"
   s.summary      = "Bridgefy SDK"
   s.description  = <<-DESC
                   Bridgefy SDK wrapper
@@ -15,7 +15,9 @@ Pod::Spec.new do |s|
   s.source_files  = "**/*.{h,m}"
   s.requires_arc = true
 
-  s.dependency 'BFTransmitter', '~> 1.0.1'
+  s.vendored_frameworks = 'BFTransmitter.framework'
+  s.dependency 'AFNetworking', '~> 4.0'
+  # s.dependency 'BFTransmitter', '~> 1.0.1'
   s.dependency 'React'
 end
 

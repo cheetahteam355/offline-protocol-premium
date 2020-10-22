@@ -20,8 +20,8 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        versionCode 20000
+        versionName "2.0.0"
     }
     lintOptions {
         abortOnError false
@@ -30,9 +30,19 @@ android {
 }
 
 repositories {
+    // maven {
+    //     url "http://maven.bridgefy.com/artifactory/libs-release-local"
+    //     artifactUrls = ["http://jcenter.bintray.com/"]
+    // }
     maven {
-        url "http://maven.bridgefy.com/artifactory/libs-release-local"
-        artifactUrls = ["http://jcenter.bintray.com/"]
+        url "http://104.196.228.98:8081/artifactory/libs-snapshot-local"
+        credentials {
+            username = 'bridgefy-beta'
+            password = '2NVfKhPMAJ4vMP8hudwkKM35wQvpLadj'
+        }
+        authentication {
+            basic(BasicAuthentication)
+        }
     }
     jcenter()
     google()
@@ -40,5 +50,6 @@ repositories {
 
 dependencies {
     implementation "com.facebook.react:react-native:+"
-    implementation 'com.bridgefy:android-sdk:1.1.25'
+    // implementation 'com.bridgefy:android-sdk:1.1.25'
+    implementation('com.bridgefy:android-sdk:+@aar') { transitive=true }
 }

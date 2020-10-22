@@ -180,11 +180,24 @@ android {
     }
 }
 
+// repositories {
+//   maven {
+//     url "http://maven.bridgefy.com/artifactory/libs-release-local"
+//     artifactUrls = ["http://jcenter.bintray.com/"]
+//   }
+// }
+
 repositories {
-  maven {
-    url "http://maven.bridgefy.com/artifactory/libs-release-local"
-    artifactUrls = ["http://jcenter.bintray.com/"]
-  }
+    maven {
+        url "http://104.196.228.98:8081/artifactory/libs-snapshot-local"
+        credentials {
+            username = 'bridgefy-beta'
+            password = '2NVfKhPMAJ4vMP8hudwkKM35wQvpLadj'
+        }
+        authentication {
+            basic(BasicAuthentication)
+        }
+    }
 }
 
 dependencies {

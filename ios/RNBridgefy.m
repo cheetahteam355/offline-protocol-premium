@@ -373,35 +373,35 @@ didReceiveDictionary:(NSDictionary<NSString *, id> * _Nullable) dictionary
 }
 
 - (BOOL)transmitter:(BFTransmitter *)transmitter shouldConnectSecurelyWithUser:(NSString *)user {
-//    return YES;
-    return NO;
+    return YES;
+    // return NO;
 }
 
 - (void)transmitterNeedsInterfaceActivation:(BFTransmitter *)transmitter {
     NSLog(@"transmitterNeedsInterfaceActivation");
-    //TODO: Implement
+    //TODO: Implement?
 }
 
 - (void)transmitterDidDetectAnotherInterfaceStarted:(BFTransmitter *)transmitter {
-    //TODO: Implement
     NSLog(@"transmitterDidDetectAnotherInterfaceStarted");
+    //TODO: Implement?
 }
 
 - (void)transmitter:(nonnull BFTransmitter *)transmitter didDetectNearbyUser:(nonnull NSString *)user {
-//    [self sendEventWithName:kDeviceConnected body:userDict];
     NSLog(@"didDetectNearbyUser");
+    // TODO Implement?
 }
 
 
 - (void)transmitter:(nonnull BFTransmitter *)transmitter didFailConnectingToUser:(nonnull NSString *)user error:(nonnull NSError *)error {
-//    [self sendEventWithName:kDeviceConnected body:userDict];
     NSLog(@"didFailConnectingToUser");
+    // TODO Implement?
 }
 
 
 - (void)transmitter:(nonnull BFTransmitter *)transmitter userIsNotAvailable:(nonnull NSString *)user {
-//    [self sendEventWithName:kDeviceConnected body:userDict];
     NSLog(@"userIsNotAvailable");
+    // TODO Implement?
 }
 
 
